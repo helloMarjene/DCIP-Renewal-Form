@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<title>Membership Renewal — Discipleship Christian Network International, Pastoral Forum</title>
+<meta name="description" content="Digital Membership Renewal Portal for the Discipleship Christian Network International Pastoral Forum.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   1. DESIGN TOKENS
+   ============================================================ */
+:root{
+  --navy: #16233F;
+  --navy-deep: #0E1830;
+  --navy-soft: #24365E;
+  --gold: #B8935A;
+  --gold-light: #E7D6B2;
+  --teal: #2F5D62;
+  --ivory: #FAF8F3;
+  --paper: #FFFFFF;
+  --line: #E6E1D3;
+  --ink: #232330;
+  --ink-soft: #6B6B78;
+  --success: #3F7A5D;
+  --success-bg: #EAF3EC;
+  --danger: #B23A3A;
+  --danger-bg: #FBEBEB;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: 'IBM Plex Mono', Menlo, monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --shadow-sm: 0 1px 3px rgba(22,35,63,0.08);
+  --shadow-md: 0 8px 24px rgba(22,35,63,0.10);
+  --shadow-lg: 0 20px 48px rgba(22,35,63,0.16);
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; }
+body{
+  margin:0;
+  font-family:var(--font-body);
+  background:var(--ivory);
+  color:var(--ink);
+  line-height:1.5;
+  overflow-x:hidden;
+}
+img{ max-width:100%; display:block; }
+button{ font-family:inherit; }
+:focus-visible{
+  outline:3px solid var(--teal);
+  outline-offset:2px;
+}
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+}
+
+/* ============================================================
+   2. HEADER
+   ============================================================ */
+.site-header{
+  background: linear-gradient(155deg, var(--navy) 0%, var(--navy-deep) 100%);
+  color:#fff;
+  padding: 18px 20px 22px;
+  position:relative;
+}
+.site-header::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:0; height:4px;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+}
+.header-inner{
+  max-width:900px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.header-logo{
+  width:52px; height:52px;
+  border-radius:50%;
+  background:#fff;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+  box-shadow: var(--shadow-sm);
+  overflow:hidden;
+}
+.header-logo img{ width:100%; height:100%; object-fit:contain; }
+.header-text{ min-width:0; }
+.header-eyebrow{
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--gold-light);
+  margin:0 0 2px;
+}
+.header-org{
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:clamp(16px, 4.4vw, 22px);
+  line-height:1.15;
+  margin:0;
+  letter-spacing:.01em;
+}
+.header-sub{
+  font-size:12px;
+  color:rgba(255,255,255,.72);
+  margin:2px 0 0;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.header-title{
+  max-width:900px;
+  margin:16px auto 0;
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:clamp(20px, 5.4vw, 30px);
+  color:#fff;
+}
+
+/* ============================================================
+   3. LAYOUT / SHELL
+   ============================================================ */
+.shell{
+  max-width:760px;
+  margin:0 auto;
+  padding:22px 18px 90px;
+}
+.intro-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--radius-md);
+  padding:18px 20px;
+  margin-bottom:22px;
+  box-shadow:var(--shadow-sm);
+}
+.intro-card p{ margin:0 0 10px; color:var(--ink); font-size:15px; }
+.intro-card p:last-child{ margin-bottom:0; }
+.notice-strip{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  background:#F4EFE2;
+  border:1px solid var(--gold-light);
+  border-radius:var(--radius-sm);
+  padding:10px 12px;
+  font-size:13px;
+  color:#5B4A2C;
+}
+.notice-strip svg{ flex-shrink:0; margin-top:2px; }
+
+/* ============================================================
+   4. PROGRESS — PASSPORT STAMP STYLE
+   ============================================================ */
+.progress-wrap{
+  margin-bottom:26px;
+}
+.progress-stamps{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:4px;
+}
+.stamp-step{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  position:relative;
+}
+.stamp-step:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  top:19px; left:calc(50% + 26px); right:calc(-50% + 26px);
+  height:2px;
+  background:var(--line);
+  z-index:0;
+}
+.stamp-step.is-complete:not(:last-child)::after{ background:var(--gold); }
+.stamp-circle{
+  width:38px; height:38px;
+  border-radius:50%;
+  border:2px dashed var(--line);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-mono);
+  font-size:13px;
+  font-weight:500;
+  color:var(--ink-soft);
+  background:var(--paper);
+  position:relative; z-index:1;
+  transition: all .25s ease;
+}
+.stamp-step.is-active .stamp-circle{
+  border-style:solid;
+  border-color:var(--navy);
+  color:var(--navy);
+  transform:scale(1.08) rotate(-4deg);
+  box-shadow:var(--shadow-sm);
+}
+.stamp-step.is-complete .stamp-circle{
+  border-style:solid;
+  border-color:var(--gold);
+  background:var(--gold);
+  color:#fff;
+  transform:rotate(-4deg);
+}
+.stamp-label{
+  font-size:11px;
+  margin-top:6px;
+  color:var(--ink-soft);
+  font-weight:500;
+  letter-spacing:.02em;
+}
+.stamp-step.is-active .stamp-label{ color:var(--navy); font-weight:600; }
+.stamp-step.is-complete .stamp-label{ color:var(--ink); }
+.progress-bar-mobile{
+  display:none;
+  margin-top:10px;
+  height:5px;
+  border-radius:3px;
+  background:var(--line);
+  overflow:hidden;
+}
+.progress-bar-fill{
+  height:100%;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--navy) 100%);
+  border-radius:3px;
+  transition: width .3s ease;
+}
+.progress-text-mobile{
+  display:none;
+  font-size:12px;
+  color:var(--ink-soft);
+  margin-top:8px;
+  text-align:center;
+  font-family:var(--font-mono);
+}
+@media (max-width:560px){
+  .stamp-label{ display:none; }
+  .progress-bar-mobile, .progress-text-mobile{ display:block; }
+}
+
+/* ============================================================
+   5. FORM CARD / STEPS
+   ============================================================ */
+.form-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-md);
+  padding:26px 24px 24px;
+}
+@media (max-width:560px){
+  .form-card{ padding:20px 16px 18px; border-radius:var(--radius-md); }
+}
+.step-panel{ display:none; }
+.step-panel.is-active{
+  display:block;
+  animation: stepIn .35s ease;
+}
+@keyframes stepIn{
+  from{ opacity:0; transform:translateY(10px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+.step-heading{
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:clamp(19px,4vw,24px);
+  color:var(--navy);
+  margin:0 0 4px;
+}
+.step-subheading{
+  font-size:13px;
+  color:var(--ink-soft);
+  margin:0 0 20px;
+}
+
+.field-group{ margin-bottom:18px; }
+.field-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+@media (max-width:520px){
+  .field-row{ grid-template-columns:1fr; gap:0; }
+}
+label.field-label{
+  display:block;
+  font-size:13.5px;
+  font-weight:600;
+  color:var(--ink);
+  margin-bottom:6px;
+}
+.field-label .req{ color:var(--danger); margin-left:2px; }
+.field-hint{
+  font-size:12px;
+  color:var(--ink-soft);
+  margin-top:5px;
+}
+input[type=text],
+input[type=email],
+input[type=tel],
+input[type=date],
+input[type=number],
+select,
+textarea{
+  width:100%;
+  font-family:var(--font-body);
+  font-size:16px;
+  padding:13px 14px;
+  border:1.5px solid var(--line);
+  border-radius:var(--radius-sm);
+  background:var(--paper);
+  color:var(--ink);
+  transition: border-color .18s ease, box-shadow .18s ease;
+  min-height:48px;
+}
+textarea{ min-height:84px; resize:vertical; }
+input:focus, select:focus, textarea:focus{
+  border-color:var(--navy);
+  box-shadow:0 0 0 4px rgba(22,35,63,0.08);
+  outline:none;
+}
+input.has-error, select.has-error, textarea.has-error{
+  border-color:var(--danger);
+  background:var(--danger-bg);
+}
+.error-msg{
+  display:none;
+  color:var(--danger);
+  font-size:12.5px;
+  margin-top:6px;
+  font-weight:500;
+}
+.error-msg.is-visible{ display:block; }
+
+/* Radio / choice cards */
+.choice-cards{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.choice-card{
+  position:relative;
+  flex:1 1 140px;
+}
+.choice-card input{
+  position:absolute;
+  opacity:0;
+  width:100%; height:100%;
+  margin:0; cursor:pointer;
+}
+.choice-card-body{
+  border:1.5px solid var(--line);
+  border-radius:var(--radius-sm);
+  padding:14px 14px;
+  text-align:center;
+  font-weight:600;
+  color:var(--ink);
+  background:var(--paper);
+  transition: all .18s ease;
+  min-height:48px;
+  display:flex; align-items:center; justify-content:center;
+}
+.choice-card input:checked + .choice-card-body{
+  border-color:var(--navy);
+  background:var(--navy);
+  color:#fff;
+  box-shadow:var(--shadow-sm);
+}
+.choice-card input:focus-visible + .choice-card-body{
+  outline:3px solid var(--teal); outline-offset:2px;
+}
+
+/* Language chips */
+.chip-input-wrap{
+  border:1.5px solid var(--line);
+  border-radius:var(--radius-sm);
+  padding:8px;
+  display:flex; flex-wrap:wrap; gap:8px;
+  background:var(--paper);
+}
+.chip-input-wrap:focus-within{
+  border-color:var(--navy);
+  box-shadow:0 0 0 4px rgba(22,35,63,0.08);
+}
+.chip{
+  display:inline-flex; align-items:center; gap:6px;
+  background:var(--navy);
+  color:#fff;
+  font-size:13px; font-weight:500;
+  padding:6px 8px 6px 12px;
+  border-radius:999px;
+}
+.chip button{
+  background:rgba(255,255,255,.18);
+  border:none; color:#fff; width:18px; height:18px; border-radius:50%;
+  cursor:pointer; font-size:12px; line-height:1; display:flex; align-items:center; justify-content:center;
+}
+#language-input{
+  flex:1 1 120px;
+  border:none; padding:8px; min-height:36px; min-width:120px;
+}
+#language-input:focus{ box-shadow:none; }
+
+/* Buttons */
+.step-actions{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:26px;
+}
+.btn{
+  font-size:15px;
+  font-weight:600;
+  padding:14px 24px;
+  border-radius:999px;
+  border:none;
+  cursor:pointer;
+  min-height:48px;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+}
+.btn:active{ transform:scale(.97); }
+.btn-primary{
+  background:var(--navy);
+  color:#fff;
+  box-shadow:var(--shadow-sm);
+}
+.btn-primary:hover{ background:var(--navy-soft); box-shadow:var(--shadow-md); }
+.btn-secondary{
+  background:transparent;
+  color:var(--navy);
+  border:1.5px solid var(--line);
+}
+.btn-secondary:hover{ border-color:var(--navy); }
+.btn-gold{
+  background:var(--gold);
+  color:#fff;
+}
+.btn-gold:hover{ box-shadow:var(--shadow-md); }
+.btn:disabled{ opacity:.6; cursor:not-allowed; transform:none; }
+.btn-full{ width:100%; }
+@media (max-width:420px){
+  .step-actions{ flex-direction:column-reverse; }
+  .step-actions .btn{ width:100%; }
+}
+
+/* Spinner */
+.spinner{
+  width:18px; height:18px;
+  border-radius:50%;
+  border:2.5px solid rgba(255,255,255,.4);
+  border-top-color:#fff;
+  animation: spin .7s linear infinite;
+}
+@keyframes spin{ to{ transform:rotate(360deg); } }
+
+/* Review */
+.review-section{
+  margin-bottom:18px;
+  border:1px solid var(--line);
+  border-radius:var(--radius-sm);
+  overflow:hidden;
+}
+.review-section-head{
+  display:flex; align-items:center; justify-content:space-between;
+  background:#F6F4EE;
+  padding:11px 14px;
+}
+.review-section-head h3{
+  margin:0; font-size:14px; font-family:var(--font-display); font-weight:600; color:var(--navy);
+}
+.review-edit-btn{
+  background:none; border:none; color:var(--teal); font-weight:600; font-size:13px; cursor:pointer;
+  padding:4px 6px;
+}
+.review-grid{ padding:12px 14px; display:grid; gap:9px; }
+.review-row{ display:flex; justify-content:space-between; gap:14px; font-size:13.5px; }
+.review-row dt{ color:var(--ink-soft); font-weight:500; }
+.review-row dd{ margin:0; text-align:right; font-weight:600; color:var(--ink); }
+.confirm-box{
+  display:flex; gap:10px; align-items:flex-start;
+  background:#F4EFE2;
+  border:1px solid var(--gold-light);
+  border-radius:var(--radius-sm);
+  padding:14px;
+  margin:18px 0;
+}
+.confirm-box input{ width:20px; height:20px; margin-top:2px; accent-color:var(--navy); flex-shrink:0; }
+.confirm-box label{ font-size:13.5px; font-weight:500; color:#4A3D24; }
+
+.form-level-error{
+  display:none;
+  background:var(--danger-bg);
+  border:1px solid var(--danger);
+  color:var(--danger);
+  padding:12px 14px;
+  border-radius:var(--radius-sm);
+  font-size:13.5px;
+  margin-top:16px;
+  font-weight:500;
+}
+.form-level-error.is-visible{ display:block; }
+
+/* ============================================================
+   6. SUCCESS SCREEN
+   ============================================================ */
+.success-screen{
+  display:none;
+  text-align:center;
+  padding:20px 6px 6px;
+}
+.success-screen.is-active{ display:block; animation: stepIn .4s ease; }
+.success-icon{
+  width:74px; height:74px;
+  border-radius:50%;
+  background:var(--success-bg);
+  display:flex; align-items:center; justify-content:center;
+  margin:0 auto 18px;
+}
+.success-icon svg{ animation: pop .5s ease; }
+@keyframes pop{ 0%{ transform:scale(0); } 70%{ transform:scale(1.15); } 100%{ transform:scale(1); } }
+.success-screen h2{
+  font-family:var(--font-display);
+  color:var(--navy);
+  font-size:23px;
+  margin:0 0 10px;
+}
+.success-screen p{ color:var(--ink-soft); font-size:14.5px; margin:0 0 6px; }
+.reference-box{
+  display:inline-block;
+  background:var(--navy);
+  color:#fff;
+  font-family:var(--font-mono);
+  font-size:16px;
+  letter-spacing:.03em;
+  padding:12px 22px;
+  border-radius:var(--radius-sm);
+  margin:16px 0;
+}
+
+/* ============================================================
+   7. DEVELOPER WATERMARK
+   ============================================================ */
+.dev-watermark{
+  position:fixed;
+  left:14px; bottom:14px;
+  z-index:999;
+  width:40px; height:40px;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);
+  border:1px solid rgba(255,255,255,.5);
+  background:#fff;
+  cursor:pointer;
+  padding:0;
+  display:flex; align-items:center; justify-content:center;
+  transition: transform .15s ease;
+}
+.dev-watermark:hover{ transform:translateY(-2px); }
+.dev-watermark img{ width:100%; height:100%; object-fit:cover; }
+
+/* ============================================================
+   8. UTILITIES
+   ============================================================ */
+.toast{
+  position:fixed;
+  left:50%; bottom:24px;
+  transform:translateX(-50%) translateY(20px);
+  background:var(--ink);
+  color:#fff;
+  padding:12px 18px;
+  border-radius:var(--radius-sm);
+  font-size:13.5px;
+  box-shadow:var(--shadow-md);
+  opacity:0;
+  pointer-events:none;
+  transition: all .25s ease;
+  z-index:1000;
+  max-width:90vw;
+}
+.toast.is-visible{ opacity:1; transform:translateX(-50%) translateY(0); }
+.draft-note{
+  font-size:12px;
+  color:var(--ink-soft);
+  text-align:center;
+  margin-top:14px;
+}
+.draft-note button{
+  background:none; border:none; color:var(--teal); font-weight:600; cursor:pointer; text-decoration:underline; font-size:12px;
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-logo">
+      <img src="image/logo.png" alt="Discipleship Christian Network International logo">
+    </div>
+    <div class="header-text">
+      <p class="header-eyebrow">Pastoral Forum</p>
+      <p class="header-org">Discipleship Christian Network International</p>
+      <p class="header-sub">Pastoral Forum</p>
+    </div>
+  </div>
+  <h1 class="header-title">Membership Renewal</h1>
+</header>
+
+<main class="shell">
+
+  <!-- ============================================================
+       INTRODUCTION
+       ============================================================ -->
+  <section class="intro-card" aria-labelledby="intro-heading">
+    <p id="intro-heading">Welcome to the Discipleship Christian Network International Pastoral Forum Membership Renewal Portal.</p>
+    <p>Pastors and church leaders from around the world can use this form to renew their membership digitally, wherever they are serving.</p>
+    <p>Please provide accurate information and review your details carefully before submitting.</p>
+    <div class="notice-strip">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9C7A3A" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span>Your information will be used for membership renewal and administrative purposes.</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROGRESS INDICATOR
+       ============================================================ -->
+  <div class="progress-wrap">
+    <div class="progress-stamps" id="progress-stamps">
+      <div class="stamp-step is-active" data-step="1">
+        <div class="stamp-circle">1</div>
+        <div class="stamp-label">Personal</div>
+      </div>
+      <div class="stamp-step" data-step="2">
+        <div class="stamp-circle">2</div>
+        <div class="stamp-label">Church</div>
+      </div>
+      <div class="stamp-step" data-step="3">
+        <div class="stamp-circle">3</div>
+        <div class="stamp-label">Renewal</div>
+      </div>
+      <div class="stamp-step" data-step="4">
+        <div class="stamp-circle">4</div>
+        <div class="stamp-label">Review</div>
+      </div>
+    </div>
+    <div class="progress-bar-mobile"><div class="progress-bar-fill" id="progress-bar-fill" style="width:25%"></div></div>
+    <p class="progress-text-mobile" id="progress-text-mobile">Step 1 of 4 — Personal</p>
+  </div>
+
+  <!-- ============================================================
+       FORM CARD
+       ============================================================ -->
+  <form class="form-card" id="renewal-form" novalidate>
+
+    <!-- STEP 1: PERSONNEL INFORMATION -->
+    <section class="step-panel is-active" data-step-panel="1" aria-labelledby="step1-heading">
+      <h2 class="step-heading" id="step1-heading">Personnel Information</h2>
+      <p class="step-subheading">Tell us about yourself as the senior pastor.</p>
+
+      <div class="field-group">
+        <label class="field-label" for="pastorName">Senior Pastor's Full Name<span class="req">*</span></label>
+        <input type="text" id="pastorName" name="pastorName" autocomplete="name" required>
+        <p class="error-msg" data-error-for="pastorName">Please enter the pastor's full name.</p>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label" for="title">Title<span class="req">*</span></label>
+          <select id="title" name="title" required>
+            <option value="">Select title…</option>
+            <option>Pastor</option>
+            <option>Senior Pastor</option>
+            <option>Bishop</option>
+            <option>Reverend</option>
+            <option>Apostle</option>
+            <option>Evangelist</option>
+            <option>Overseer</option>
+            <option>Other</option>
+          </select>
+          <p class="error-msg" data-error-for="title">Please select a title.</p>
+        </div>
+        <div class="field-group" id="titleOtherWrap" style="display:none;">
+          <label class="field-label" for="titleOther">Please specify title</label>
+          <input type="text" id="titleOther" name="titleOther">
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="denomination">Denomination<span class="req">*</span></label>
+        <input type="text" id="denomination" name="denomination" required>
+        <p class="error-msg" data-error-for="denomination">Please enter your denomination.</p>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label" for="nationality">Nationality<span class="req">*</span></label>
+          <select id="nationality" name="nationality" required>
+            <option value="">Select country…</option>
+          </select>
+          <p class="error-msg" data-error-for="nationality">Please select your nationality.</p>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="dob">Date of Birth<span class="req">*</span></label>
+          <input type="date" id="dob" name="dob" required>
+          <p class="error-msg" data-error-for="dob">Please enter your date of birth.</p>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="gender">Gender</label>
+        <select id="gender" name="gender">
+          <option value="">Prefer not to say</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Prefer not to say</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="mailingAddress">Mailing Address<span class="req">*</span></label>
+        <textarea id="mailingAddress" name="mailingAddress" required></textarea>
+        <p class="error-msg" data-error-for="mailingAddress">Please enter your mailing address.</p>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label" for="city">City<span class="req">*</span></label>
+          <input type="text" id="city" name="city" required>
+          <p class="error-msg" data-error-for="city">Please enter your city.</p>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="postalCode">Postal / ZIP Code</label>
+          <input type="text" id="postalCode" name="postalCode">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label" for="contactEmail">Contact Email<span class="req">*</span></label>
+          <input type="email" id="contactEmail" name="contactEmail" autocomplete="email" required>
+          <p class="error-msg" data-error-for="contactEmail">Please provide a valid email address.</p>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="phone">Tel / Cell Phone<span class="req">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="+256 700 000 000" required>
+          <p class="field-hint">Include your country code, e.g. +256 for Uganda, +1 for USA.</p>
+          <p class="error-msg" data-error-for="phone">Please enter a valid phone number, including country code.</p>
+        </div>
+      </div>
+
+      <div class="step-actions">
+        <span></span>
+        <button type="button" class="btn btn-primary" onclick="nextStep()">Continue to Church Information</button>
+      </div>
+    </section>
+
+    <!-- STEP 2: CHURCH ORGANISATION INFORMATION -->
+    <section class="step-panel" data-step-panel="2" aria-labelledby="step2-heading">
+      <h2 class="step-heading" id="step2-heading">Church Organisation Information</h2>
+      <p class="step-subheading">Tell us about the church or ministry you lead.</p>
+
+      <div class="field-group">
+        <label class="field-label" for="churchName">Church Organisation Name<span class="req">*</span></label>
+        <input type="text" id="churchName" name="churchName" required>
+        <p class="error-msg" data-error-for="churchName">Please enter the church organisation name.</p>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="foundedDate">Founded Date<span class="req">*</span></label>
+        <input type="date" id="foundedDate" name="foundedDate" required>
+        <p class="error-msg" data-error-for="foundedDate">Please enter the date the church was founded.</p>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="churchAddress">Church Mailing Address<span class="req">*</span></label>
+        <textarea id="churchAddress" name="churchAddress" required></textarea>
+        <p class="error-msg" data-error-for="churchAddress">Please enter the church's mailing address.</p>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label" for="churchCity">City<span class="req">*</span></label>
+          <input type="text" id="churchCity" name="churchCity" required>
+          <p class="error-msg" data-error-for="churchCity">Please enter the church's city.</p>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="churchPostalCode">Postal / ZIP Code</label>
+          <input type="text" id="churchPostalCode" name="churchPostalCode">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label" for="churchEmail">Church Email</label>
+          <input type="email" id="churchEmail" name="churchEmail">
+          <p class="error-msg" data-error-for="churchEmail">Please provide a valid church email address.</p>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="churchPhone">Church Tel</label>
+          <input type="tel" id="churchPhone" name="churchPhone" placeholder="+256 700 000 000">
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="language-input">Language(s) Spoken in the Church<span class="req">*</span></label>
+        <div class="chip-input-wrap" id="chip-wrap">
+          <input type="text" id="language-input" placeholder="Type a language and press Enter">
+        </div>
+        <p class="field-hint">Add each language, then press Enter or comma to confirm it.</p>
+        <p class="error-msg" data-error-for="churchLanguages">Please add at least one language.</p>
+      </div>
+
+      <div class="step-actions">
+        <button type="button" class="btn btn-secondary" onclick="previousStep()">Back</button>
+        <button type="button" class="btn btn-primary" onclick="nextStep()">Continue to Membership</button>
+      </div>
+    </section>
+
+    <!-- STEP 3: MEMBERSHIP & RENEWAL -->
+    <section class="step-panel" data-step-panel="3" aria-labelledby="step3-heading">
+      <h2 class="step-heading" id="step3-heading">Membership &amp; Renewal</h2>
+      <p class="step-subheading">A couple of quick questions about your membership status.</p>
+
+      <div class="field-group">
+        <label class="field-label" id="existingMemberLabel">Are you an existing member?<span class="req">*</span></label>
+        <div class="choice-cards" role="radiogroup" aria-labelledby="existingMemberLabel">
+          <label class="choice-card">
+            <input type="radio" name="existingMember" value="Yes" required>
+            <span class="choice-card-body">Yes</span>
+          </label>
+          <label class="choice-card">
+            <input type="radio" name="existingMember" value="No">
+            <span class="choice-card-body">No</span>
+          </label>
+        </div>
+        <p class="error-msg" data-error-for="existingMember">Please let us know if you are an existing member.</p>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" id="renewalFeeLabel">Are you willing to contribute the $50.00 renewal fee?<span class="req">*</span></label>
+        <div class="choice-cards" role="radiogroup" aria-labelledby="renewalFeeLabel">
+          <label class="choice-card">
+            <input type="radio" name="renewalFee" value="Yes" required>
+            <span class="choice-card-body">Yes</span>
+          </label>
+          <label class="choice-card">
+            <input type="radio" name="renewalFee" value="Not sure">
+            <span class="choice-card-body">Not sure</span>
+          </label>
+          <label class="choice-card">
+            <input type="radio" name="renewalFee" value="No">
+            <span class="choice-card-body">No</span>
+          </label>
+        </div>
+        <p class="field-hint">This only records your response. No payment is collected on this form.</p>
+        <p class="error-msg" data-error-for="renewalFee">Please respond to the renewal fee question.</p>
+      </div>
+
+      <div class="step-actions">
+        <button type="button" class="btn btn-secondary" onclick="previousStep()">Back</button>
+        <button type="button" class="btn btn-primary" onclick="nextStep()">Continue to Review</button>
+      </div>
+    </section>
+
+    <!-- STEP 4: REVIEW & SUBMIT -->
+    <section class="step-panel" data-step-panel="4" aria-labelledby="step4-heading">
+      <h2 class="step-heading" id="step4-heading">Review &amp; Submit</h2>
+      <p class="step-subheading">Please review your information carefully before submitting.</p>
+
+      <div id="review-container"></div>
+
+      <div class="confirm-box">
+        <input type="checkbox" id="confirmAccurate" required>
+        <label for="confirmAccurate">I confirm that the information I have provided is accurate to the best of my knowledge.</label>
+      </div>
+      <p class="error-msg" data-error-for="confirmAccurate" style="margin-top:-10px;">Please confirm that the information provided is accurate.</p>
+
+      <p class="form-level-error" id="form-level-error"></p>
+
+      <div class="step-actions">
+        <button type="button" class="btn btn-secondary" onclick="previousStep()">Back</button>
+        <button type="submit" class="btn btn-gold" id="submitBtn">
+          <span id="submitBtnText">Submit Membership Renewal</span>
+        </button>
+      </div>
+    </section>
+
+  </form>
+
+  <!-- ============================================================
+       SUCCESS SCREEN
+       ============================================================ -->
+  <div class="form-card success-screen" id="success-screen">
+    <div class="success-icon">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3F7A5D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h2>Registration Submitted Successfully</h2>
+    <p>Thank you. Your membership renewal information has been successfully submitted to the Discipleship Christian Network International Pastoral Forum.</p>
+    <div class="reference-box" id="referenceBox">DCNI-2026-0000</div>
+    <p>Please keep your registration reference for your records.</p>
+    <div class="step-actions" style="justify-content:center; margin-top:22px;">
+      <button type="button" class="btn btn-primary" onclick="resetForm()">Return to Home</button>
+    </div>
+  </div>
+
+  <p class="draft-note" id="draft-note" style="display:none;">
+    A draft of your progress is saved on this device. <button type="button" onclick="clearDraft()">Clear saved draft</button>
+  </p>
+
+</main>
+
+<!-- ============================================================
+     DEVELOPER WATERMARK (UI ONLY — NEVER INCLUDED IN THE PDF)
+     ============================================================ -->
+<button class="dev-watermark" id="devWatermark" type="button" title="Website by M.A.R.J.E.N.E" aria-label="Website by M.A.R.J.E.N.E — opens in a new tab">
+  <img src="image/watermark.jpg" alt="">
+</button>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   APPLICATION STATE
+   ============================================================ */
+// EDIT THIS when you deploy the backend somewhere other than your own
+// computer — e.g. 'https://dcni-backend.onrender.com/api/membership-renewals'
+const API_URL = 'http://localhost:3000/api/membership-renewals';
+
+const STORAGE_KEY = 'dcni_renewal_draft_v1';
+const TOTAL_STEPS = 4;
+let currentStep = 1;
+let isSubmitting = false;
+let languages = [];
+
+const STEP_LABELS = ['Personal', 'Church', 'Renewal', 'Review'];
+
+/* Full country list for the Nationality selector */
+const COUNTRIES = ["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cabo Verde","Cambodia","Cameroon","Canada","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo (Brazzaville)","Congo (DRC)","Costa Rica","Croatia","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Ivory Coast","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"];
+
+/* ============================================================
+   INITIALISATION
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', initializeForm);
+
+function initializeForm(){
+  populateCountryOptions();
+  bindMiscHandlers();
+  loadFromLocalStorage();
+  updateProgress();
+
+  // Auto-save as the pastor types (no sensitive payment data is ever stored)
+  document.getElementById('renewal-form').addEventListener('input', saveToLocalStorage);
+  document.getElementById('renewal-form').addEventListener('change', saveToLocalStorage);
+
+  document.getElementById('renewal-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    submitRegistration();
+  });
+}
+
+function populateCountryOptions(){
+  const select = document.getElementById('nationality');
+  COUNTRIES.forEach(function(country){
+    const opt = document.createElement('option');
+    opt.value = country;
+    opt.textContent = country;
+    select.appendChild(opt);
+  });
+}
+
+function bindMiscHandlers(){
+  // Title "Other" reveal
+  const titleSelect = document.getElementById('title');
+  const otherWrap = document.getElementById('titleOtherWrap');
+  titleSelect.addEventListener('change', function(){
+    otherWrap.style.display = (titleSelect.value === 'Other') ? 'block' : 'none';
+  });
+
+  // Language chip input
+  const langInput = document.getElementById('language-input');
+  langInput.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' || e.key === ','){
+      e.preventDefault();
+      addLanguage(langInput.value);
+      langInput.value = '';
+    }
+  });
+  langInput.addEventListener('blur', function(){
+    if(langInput.value.trim()){
+      addLanguage(langInput.value);
+      langInput.value = '';
+    }
+  });
+
+  // Developer watermark link
+  document.getElementById('devWatermark').addEventListener('click', function(){
+    window.open('https://hellomarjene.vercel.app', '_blank', 'noopener');
+  });
+}
+
+/* ============================================================
+   LANGUAGE CHIPS
+   ============================================================ */
+function addLanguage(value){
+  const clean = value.replace(',', '').trim();
+  if(!clean) return;
+  if(languages.some(l => l.toLowerCase() === clean.toLowerCase())) return;
+  languages.push(clean);
+  renderLanguageChips();
+  saveToLocalStorage();
+  clearFieldError('churchLanguages');
+}
+function removeLanguage(index){
+  languages.splice(index, 1);
+  renderLanguageChips();
+  saveToLocalStorage();
+}
+function renderLanguageChips(){
+  const wrap = document.getElementById('chip-wrap');
+  wrap.querySelectorAll('.chip').forEach(function(chip){ chip.remove(); });
+  const input = document.getElementById('language-input');
+  languages.forEach(function(lang, i){
+    const chip = document.createElement('span');
+    chip.className = 'chip';
+    chip.innerHTML = '<span></span><button type="button" aria-label="Remove ' + escapeHtml(lang) + '">&times;</button>';
+    chip.querySelector('span').textContent = lang;
+    chip.querySelector('button').addEventListener('click', function(){ removeLanguage(i); });
+    wrap.insertBefore(chip, input);
+  });
+}
+
+/* ============================================================
+   STEP NAVIGATION
+   ============================================================ */
+function goToStep(step){
+  document.querySelectorAll('.step-panel').forEach(function(panel){
+    panel.classList.toggle('is-active', Number(panel.dataset.stepPanel) === step);
+  });
+  currentStep = step;
+  updateProgress();
+  if(step === TOTAL_STEPS){
+    renderReview();
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function nextStep(){
+  if(!validateStep(currentStep)) return;
+  if(currentStep < TOTAL_STEPS){
+    goToStep(currentStep + 1);
+  }
+}
+
+function previousStep(){
+  if(currentStep > 1){
+    goToStep(currentStep - 1);
+  }
+}
+
+function updateProgress(){
+  document.querySelectorAll('.stamp-step').forEach(function(el){
+    const stepNum = Number(el.dataset.step);
+    el.classList.toggle('is-active', stepNum === currentStep);
+    el.classList.toggle('is-complete', stepNum < currentStep);
+  });
+  const pct = Math.round((currentStep / TOTAL_STEPS) * 100);
+  document.getElementById('progress-bar-fill').style.width = pct + '%';
+  document.getElementById('progress-text-mobile').textContent =
+    'Step ' + currentStep + ' of ' + TOTAL_STEPS + ' — ' + STEP_LABELS[currentStep - 1];
+}
+
+/* ============================================================
+   VALIDATION
+   ============================================================ */
+function setFieldError(name, show){
+  const field = document.getElementById(name) || document.querySelector('[name="' + name + '"]');
+  const msg = document.querySelector('.error-msg[data-error-for="' + name + '"]');
+  if(msg) msg.classList.toggle('is-visible', show);
+  if(field && field.classList) field.classList.toggle('has-error', show);
+}
+function clearFieldError(name){ setFieldError(name, false); }
+
+function isValidEmail(value){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+function isValidPhone(value){
+  return /^\+?[0-9\s\-()]{7,20}$/.test(value);
+}
+
+function validateStep(step){
+  let valid = true;
+  const f = getFieldValues();
+
+  function require(name, condition){
+    const ok = !!condition;
+    setFieldError(name, !ok);
+    if(!ok) valid = false;
+    return ok;
+  }
+
+  if(step === 1){
+    require('pastorName', f.pastorName.trim());
+    require('title', f.title || f.titleOther);
+    require('denomination', f.denomination.trim());
+    require('nationality', f.nationality);
+    require('dob', f.dob);
+    require('mailingAddress', f.mailingAddress.trim());
+    require('city', f.city.trim());
+    require('contactEmail', f.contactEmail.trim() && isValidEmail(f.contactEmail));
+    require('phone', f.phone.trim() && isValidPhone(f.phone));
+  }
+
+  if(step === 2){
+    require('churchName', f.churchName.trim());
+    require('foundedDate', f.foundedDate);
+    require('churchAddress', f.churchAddress.trim());
+    require('churchCity', f.churchCity.trim());
+    if(f.churchEmail.trim()){ require('churchEmail', isValidEmail(f.churchEmail)); } else { clearFieldError('churchEmail'); }
+    require('churchLanguages', languages.length > 0);
+  }
+
+  if(step === 3){
+    require('existingMember', f.existingMember);
+    require('renewalFee', f.renewalFee);
+  }
+
+  if(step === 4){
+    require('confirmAccurate', document.getElementById('confirmAccurate').checked);
+  }
+
+  if(!valid){
+    showToast('Please complete the highlighted fields.');
+    const firstError = document.querySelector('.has-error, .error-msg.is-visible');
+    if(firstError){
+      const target = firstError.closest('.field-group') || firstError;
+      target.scrollIntoView({ behavior:'smooth', block:'center' });
+    }
+  }
+  return valid;
+}
+
+/* ============================================================
+   DATA COLLECTION
+   ============================================================ */
+function getFieldValues(){
+  const radio = function(name){
+    const el = document.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : '';
+  };
+  return {
+    pastorName: val('pastorName'),
+    title: val('title'),
+    titleOther: val('titleOther'),
+    denomination: val('denomination'),
+    nationality: val('nationality'),
+    dob: val('dob'),
+    gender: val('gender'),
+    mailingAddress: val('mailingAddress'),
+    city: val('city'),
+    postalCode: val('postalCode'),
+    contactEmail: val('contactEmail'),
+    phone: val('phone'),
+
+    churchName: val('churchName'),
+    foundedDate: val('foundedDate'),
+    churchAddress: val('churchAddress'),
+    churchCity: val('churchCity'),
+    churchPostalCode: val('churchPostalCode'),
+    churchEmail: val('churchEmail'),
+    churchPhone: val('churchPhone'),
+
+    existingMember: radio('existingMember'),
+    renewalFee: radio('renewalFee')
+  };
+}
+function val(id){
+  const el = document.getElementById(id);
+  return el ? el.value : '';
+}
+
+function collectFormData(){
+  const f = getFieldValues();
+  return {
+    pastor_full_name: f.pastorName.trim(),
+    title: f.title === 'Other' ? f.titleOther.trim() : f.title,
+    denomination: f.denomination.trim(),
+    nationality: f.nationality,
+    date_of_birth: f.dob,
+    gender: f.gender || 'Prefer not to say',
+    mailing_address: f.mailingAddress.trim(),
+    city: f.city.trim(),
+    postal_code: f.postalCode.trim(),
+    contact_email: f.contactEmail.trim(),
+    phone: f.phone.trim(),
+
+    church_name: f.churchName.trim(),
+    church_founded_date: f.foundedDate,
+    church_address: f.churchAddress.trim(),
+    church_city: f.churchCity.trim(),
+    church_postal_code: f.churchPostalCode.trim(),
+    church_email: f.churchEmail.trim(),
+    church_phone: f.churchPhone.trim(),
+    church_languages: languages,
+
+    existing_member: f.existingMember,
+    renewal_fee_response: f.renewalFee
+  };
+}
+
+/* ============================================================
+   REVIEW STEP
+   ============================================================ */
+function renderReview(){
+  const d = collectFormData();
+  const container = document.getElementById('review-container');
+  container.innerHTML =
+    reviewSection('Personal Information', 1, [
+      ['Full Name', d.pastor_full_name],
+      ['Title', d.title],
+      ['Denomination', d.denomination],
+      ['Nationality', d.nationality],
+      ['Date of Birth', d.date_of_birth],
+      ['Gender', d.gender],
+      ['Mailing Address', d.mailing_address],
+      ['City', d.city],
+      ['Postal / ZIP Code', d.postal_code || '—'],
+      ['Contact Email', d.contact_email],
+      ['Phone', d.phone]
+    ]) +
+    reviewSection('Church Organisation Information', 2, [
+      ['Church Name', d.church_name],
+      ['Founded Date', d.church_founded_date],
+      ['Church Address', d.church_address],
+      ['City', d.church_city],
+      ['Postal / ZIP Code', d.church_postal_code || '—'],
+      ['Church Email', d.church_email || '—'],
+      ['Church Tel', d.church_phone || '—'],
+      ['Language(s)', d.church_languages.join(', ') || '—']
+    ]) +
+    reviewSection('Membership & Renewal', 3, [
+      ['Existing Member', d.existing_member],
+      ['Willing to contribute $50.00 fee', d.renewal_fee_response]
+    ]);
+}
+
+function reviewSection(title, stepNum, rows){
+  const rowsHtml = rows.map(function(r){
+    return '<div class="review-row"><dt>' + escapeHtml(r[0]) + '</dt><dd>' + escapeHtml(r[1] || '—') + '</dd></div>';
+  }).join('');
+  return (
+    '<div class="review-section">' +
+      '<div class="review-section-head"><h3>' + escapeHtml(title) + '</h3>' +
+      '<button type="button" class="review-edit-btn" onclick="goToStep(' + stepNum + ')">Edit</button></div>' +
+      '<div class="review-grid">' + rowsHtml + '</div>' +
+    '</div>'
+  );
+}
+
+function escapeHtml(str){
+  const div = document.createElement('div');
+  div.textContent = str == null ? '' : String(str);
+  return div.innerHTML;
+}
+
+/* ============================================================
+   SUBMISSION
+   ============================================================
+   NOTE: This calls a backend API endpoint. Browser JavaScript
+   cannot securely generate the official PDF, send email, or
+   send WhatsApp notifications on its own — those steps happen
+   on the server (see the accompanying backend documentation).
+   If no backend is connected, this request will fail, and the
+   pastor will see an honest connection error rather than a
+   fake success screen.
+*/
+async function submitRegistration(){
+  if(isSubmitting) return;
+  if(!validateStep(4)) return;
+
+  isSubmitting = true;
+  const btn = document.getElementById('submitBtn');
+  const btnText = document.getElementById('submitBtnText');
+  const formError = document.getElementById('form-level-error');
+  formError.classList.remove('is-visible');
+  btn.disabled = true;
+  btnText.innerHTML = '<span class="spinner" aria-hidden="true"></span> Submitting…';
+
+  const payload = collectFormData();
+
+  try{
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if(!response.ok){
+      throw new Error('Server responded with status ' + response.status);
+    }
+
+    const data = await response.json();
+    showSuccess(data.registration_reference || data.reference);
+    clearDraft(true);
+
+  }catch(err){
+    formError.textContent = 'We could not submit your registration at this time. Please check your internet connection and try again.';
+    formError.classList.add('is-visible');
+    formError.scrollIntoView({ behavior:'smooth', block:'center' });
+  }finally{
+    isSubmitting = false;
+    btn.disabled = false;
+    btnText.textContent = 'Submit Membership Renewal';
+  }
+}
+
+function showSuccess(reference){
+  document.getElementById('renewal-form').style.display = 'none';
+  document.querySelector('.progress-wrap').style.display = 'none';
+  document.getElementById('referenceBox').textContent = reference || 'DCNI-2026-XXXX';
+  document.getElementById('success-screen').classList.add('is-active');
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+function resetForm(){
+  document.getElementById('renewal-form').reset();
+  languages = [];
+  renderLanguageChips();
+  document.getElementById('success-screen').classList.remove('is-active');
+  document.getElementById('renewal-form').style.display = 'block';
+  document.querySelector('.progress-wrap').style.display = 'block';
+  document.querySelectorAll('.has-error').forEach(function(el){ el.classList.remove('has-error'); });
+  document.querySelectorAll('.error-msg.is-visible').forEach(function(el){ el.classList.remove('is-visible'); });
+  clearDraft(true);
+  goToStep(1);
+}
+
+/* ============================================================
+   LOCAL DRAFT PERSISTENCE (non-sensitive, temporary only)
+   ============================================================ */
+function saveToLocalStorage(){
+  try{
+    const draft = collectFormData();
+    draft.__currentStep = currentStep;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(draft));
+    document.getElementById('draft-note').style.display = 'block';
+  }catch(e){ /* localStorage unavailable — safe to ignore */ }
+}
+
+function loadFromLocalStorage(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return;
+    const draft = JSON.parse(raw);
+
+    setVal('pastorName', draft.pastor_full_name);
+    setVal('title', draft.title);
+    setVal('denomination', draft.denomination);
+    setVal('nationality', draft.nationality);
+    setVal('dob', draft.date_of_birth);
+    setVal('gender', draft.gender);
+    setVal('mailingAddress', draft.mailing_address);
+    setVal('city', draft.city);
+    setVal('postalCode', draft.postal_code);
+    setVal('contactEmail', draft.contact_email);
+    setVal('phone', draft.phone);
+
+    setVal('churchName', draft.church_name);
+    setVal('foundedDate', draft.church_founded_date);
+    setVal('churchAddress', draft.church_address);
+    setVal('churchCity', draft.church_city);
+    setVal('churchPostalCode', draft.church_postal_code);
+    setVal('churchEmail', draft.church_email);
+    setVal('churchPhone', draft.church_phone);
+
+    if(Array.isArray(draft.church_languages)){
+      languages = draft.church_languages.slice();
+      renderLanguageChips();
+    }
+
+    setRadio('existingMember', draft.existing_member);
+    setRadio('renewalFee', draft.renewal_fee_response);
+
+    document.getElementById('draft-note').style.display = 'block';
+  }catch(e){ /* corrupted or unavailable draft — ignore quietly */ }
+}
+
+function setVal(id, value){
+  if(value === undefined || value === null) return;
+  const el = document.getElementById(id);
+  if(el) el.value = value;
+}
+function setRadio(name, value){
+  if(!value) return;
+  const el = document.querySelector('input[name="' + name + '"][value="' + CSS.escape(value) + '"]');
+  if(el) el.checked = true;
+}
+
+function clearDraft(silent){
+  try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+  document.getElementById('draft-note').style.display = 'none';
+  if(!silent) showToast('Saved draft cleared.');
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+let toastTimer;
+function showToast(message){
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('is-visible');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ toast.classList.remove('is-visible'); }, 3200);
+}
+</script>
+</body>
+</html>

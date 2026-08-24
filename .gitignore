@@ -1,0 +1,16 @@
+# Environment secrets
+.env
+.env.*
+
+# But keep the example configuration
+!.env.example
+
+# Node dependencies
+node_modules/
+**/node_modules/
+
+# Generated PDFs
+dcni-backend/pdfs/
+
+# Local database/data
+dcni-backend/data/
